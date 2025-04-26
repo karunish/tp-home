@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    /* Base Styles */
+    body {
+      background-color: #121212;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #e0e0e0;
+      animation: fadeIn 0.45s ease-in-out;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card Container */
+    .card {
+      background-color: #1f1f1f;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      text-align: left;
+      width: 320px;
+      position: relative;
+    }
+
+    /* Header */
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #e0e0e0;
+      position: relative;
+      text-align: center;
+    }
+
+    h1::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background-color: #e60000;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* List and Links */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #bbbbbb;
+      font-size: 1.2rem;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    a i {
+      margin-right: 10px;
+      font-size: 1.4rem;
+      color: #e60000;
+    }
+
+    a:hover {
+      color: #e60000;
+      transform: translateX(3px);
+    }
+
+    /* Floating Tooltip Card */
+    .tooltip {
+      position: absolute;
+      left: calc(40% + 10px); 
+      top: 50%;
+      transform: translateY(-50%); 
+      background-color: rgba(25, 25, 25, 0.95);
+      color: #ddd;
+      padding: 0.75rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      font-size: 0.95rem;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Hover effect */
+li:hover .tooltip {
+  opacity: 1;
+  transform: translate(24px, -50%);
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Welcome back</h1>
+    <ul>
+      <li>
+        <a href="https://canvas.hw.ac.uk/" target="_blank">
+          <i class="fas fa-graduation-cap"></i>Canvas
+        </a>
+        <div class="tooltip">Access HW courses (🤓)</div>
+      </li>
+      <li>
+        <a href="https://www.github.com" target="_blank">
+          <i class="fab fa-github"></i>GitHub
+        </a>
+        <div class="tooltip">Explore, share and update code repositories</div>
+      </li>
+      <li>
+        <a href="https://www.reddit.com" target="_blank">
+          <i class="fab fa-reddit"></i>Reddit
+        </a>
+        <div class="tooltip">Diving into niche communities are we?</div>
+      </li>
+      <li>
+        <a href="https://open.spotify.com/" target="_blank">
+          <i class="fab fa-spotify"></i>Spotify
+        </a>
+        <div class="tooltip">Listening to questionable music</div>
+      </li>
+      <li>
+        <a href="https://www.youtube.com" target="_blank">
+          <i class="fab fa-youtube"></i>YouTube
+        </a>
+        <div class="tooltip">Watch videos or shorts I guess</div>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
