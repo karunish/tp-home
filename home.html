@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background-color: #181818;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #e0e0e0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      animation: fadeIn 0.8s ease;
+    }
+    @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+    }
+
+    body.fade-out {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+
+    .circle-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: #c10000; /* ThinkPad Red */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      background-size: 50% 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 0.5s, background-size 0.5s, background-color 0.5s;
+    }
+
+    .icon {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      background-color: #2a2a2a;
+      border: 2px solid #444;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #d0d0d0;
+      font-size: 1.7rem;
+      transition: transform 0.4s, background-color 0.3s, color 0.3s, border-color 0.3s;
+      z-index: 2;
+      text-decoration: none;
+    }
+
+    .icon:hover {
+      background-color: #3a3a3a;
+      color: #ffffff;
+      border-color: #666;
+    }
+
+    .icon1 { top: 0; left: 50%; transform: translate(-50%, -50%); }
+    .icon2 { top: 25%; right: 0; transform: translate(50%, -50%); }
+    .icon3 { bottom: 25%; right: 0; transform: translate(50%, 50%); }
+    .icon4 { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+    .icon5 { bottom: 25%; left: 0; transform: translate(-50%, 50%); }
+    .icon6 { top: 25%; left: 0; transform: translate(-50%, -50%); }
+
+    /* Center background image on hover */
+    .circle-container.canvas-hover {
+      background-image: url('https://img.icons8.com/ios/100/ffffff/graduation-cap.png');
+    }
+    .circle-container.github-hover {
+      background-image: url('https://img.icons8.com/ios/100/ffffff/github.png');
+    }
+    .circle-container.reddit-hover {
+      background-image: url('https://img.icons8.com/ios/100/ffffff/reddit--v1.png');
+    }
+    .circle-container.spotify-hover {
+      background-image: url('https://img.icons8.com/ios/100/ffffff/spotify--v1.png');
+    }
+    .circle-container.youtube-hover {
+      background-image: url('https://img.icons8.com/ios/100/ffffff/youtube-play.png');
+    }
+    .circle-container.chatgpt-hover {
+      background-image: url('https://img.icons8.com/?size=100&id=FBO05Dys9QCg&format=png&color=FFFFFF');
+    }
+
+    .circle-container[class*="-hover"] {
+      background-size: 45% 45%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="circle-container" id="circle">
+    <a href="https://canvas.hw.ac.uk/" target="_blank" class="icon icon1" data-link="https://canvas.hw.ac.uk/">
+      <i class="fas fa-graduation-cap"></i>
+    </a>
+    <a href="https://github.com/" target="_blank" class="icon icon2" data-link="https://github.com/">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.reddit.com/" target="_blank" class="icon icon3" data-link="https://www.reddit.com/">
+      <i class="fab fa-reddit"></i>
+    </a>
+    <a href="https://open.spotify.com/" target="_blank" class="icon icon4" data-link="https://open.spotify.com/">
+      <i class="fab fa-spotify"></i>
+    </a>
+    <a href="https://youtube.com/" target="_blank" class="icon icon5" data-link="https://youtube.com/">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://chat.openai.com/" target="_blank" class="icon icon6" data-link="https://chat.openai.com/">
+      <i class="fas fa-robot"></i>
+    </a>
+  </div>
+
+  <script>
+  function hoverEffect(site) {
+    const circle = document.getElementById('circle');
+    circle.className = 'circle-container'; // Reset
+    if (site) {
+      circle.classList.add(site + '-hover');
+    }
+  }
+
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach(icon => {
+    icon.addEventListener('mouseenter', function () {
+      const classes = this.classList;
+      if (classes.contains('icon1')) hoverEffect('canvas');
+      else if (classes.contains('icon2')) hoverEffect('github');
+      else if (classes.contains('icon3')) hoverEffect('reddit');
+      else if (classes.contains('icon4')) hoverEffect('spotify');
+      else if (classes.contains('icon5')) hoverEffect('youtube');
+      else if (classes.contains('icon6')) hoverEffect('chatgpt');
+    });
+
+    icon.addEventListener('mouseleave', function () {
+      hoverEffect('');
+    });
+
+    icon.addEventListener('click', function (e) {
+      e.preventDefault();
+      const link = this.getAttribute('data-link');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = link;
+      }, 600);
+    });
+  });
+</script>
+
+</body>
+</html>
